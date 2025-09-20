@@ -110,18 +110,8 @@
 
 @media (max-width: 768px) {
     #tituloEstadisticas {
-        font-size: 19px; /* tamaño más pequeño en móvil */
+        font-size: 22px; /* tamaño más pequeño en móvil */
         padding-left: 12px;
-    }
-
-    /* Ocultar columnas 5, 6 y 7 de todas las tablas */
-    table td:nth-child(6),
-    table th:nth-child(6),
-    table td:nth-child(8),
-    table th:nth-child(8),
-    table td:nth-child(9),
-    table th:nth-child(9) {
-        display: none;
     }
 }
 

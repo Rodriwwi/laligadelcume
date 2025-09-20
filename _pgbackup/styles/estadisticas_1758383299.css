@@ -108,23 +108,6 @@
     padding-left: 48px;
 }
 
-@media (max-width: 768px) {
-    #tituloEstadisticas {
-        font-size: 19px; /* tamaño más pequeño en móvil */
-        padding-left: 12px;
-    }
-
-    /* Ocultar columnas 5, 6 y 7 de todas las tablas */
-    table td:nth-child(6),
-    table th:nth-child(6),
-    table td:nth-child(8),
-    table th:nth-child(8),
-    table td:nth-child(9),
-    table th:nth-child(9) {
-        display: none;
-    }
-}
-
 /* Encabezado */
 #tablaEstadisticas thead th {
     background-color: #d32f2f; /* rojo oscuro */
@@ -196,6 +179,7 @@
 .playoff-container {
     display: flex;
     flex-wrap: wrap;
+    padding: 49px;
     gap: 20px;
 }
 
@@ -204,7 +188,6 @@
     display: flex;
     align-items: center;
     background-color: #fff4d1; /* dorado suave */
-    padding: 40px;
     border-radius: 12px;
     flex: 1 1 300px;
     font-family: 'Oswald', sans-serif;
@@ -334,11 +317,4 @@
     font-family: 'Righteous', sans-serif;
     color: #2c2c2c;         /* negro */
     padding-left: 49px;
-}
-
-@media (max-width: 768px) {
-    #tituloPlayoffs {
-        font-size: 22px; /* tamaño más pequeño en móvil */
-        padding-left: 12px;
-    }
 }
