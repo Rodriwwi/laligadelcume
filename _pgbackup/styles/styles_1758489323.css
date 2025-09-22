@@ -433,3 +433,9 @@ footer {
         margin-left: 10px;      /* separación del otro botón */
     }
 }
+
+.team-logo .trophy {
+    max-width: 40px;
+    max-height: 40px;
+    margin-left: 8px; /* separa de la imagen del equipo */
+}

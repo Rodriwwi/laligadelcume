@@ -247,18 +247,6 @@ footer {
     transition: all 0.3s ease;
 }
 
-.bases-btn {
-    background-color: #ffffff;   /* Fondo blanco */
-    color: #ef3340;              /* Texto rojo */
-    border: 2px solid #ef3340;   /* Borde rojo */
-    border-radius: 8px;          /* Esquinas redondeadas */
-    padding: 8px 20px;           /* Espaciado interno */
-    font-family: 'Righteous', sans-serif;
-    font-size: 14px;
-    text-decoration: none;       /* Quita subrayado */
-    transition: all 0.3s ease;  /* Transición suave al hover */
-}
-
 .hero .btn:hover {
     background-color: #d92c38;
     color: white;
@@ -421,15 +409,20 @@ footer {
     }
 }
 
-/* Por defecto, ocultamos el botón */
-.mobile-only {
-    display: none;
-}
-
-/* Solo se muestra en móviles (pantallas ≤ 768px) */
+/* ===========================
+   Mostrar BASES junto al logo solo en móvil
+   =========================== */
 @media (max-width: 768px) {
-    .mobile-only {
-        display: inline-block;  /* o block si quieres que ocupe toda la línea */
-        margin-left: 10px;      /* separación del otro botón */
+    .mobile-bases {
+        display: inline-block;       /* Para estar al lado del logo */
+        margin-left: 10px;           /* Separación del logo */
+        font-size: 12px;             /* Tamaño pequeño */
+        color: #2c2c2c;              /* Igual que antes */
+        font-family: Righteous;
+    }
+
+    /* Opcional: ocultar BASES en el menú desplegable en móvil */
+    .nav-links li a[href*="docs.google.com"] {
+        display: none;
     }
 }

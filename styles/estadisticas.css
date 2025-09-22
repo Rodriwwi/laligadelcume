@@ -155,7 +155,7 @@
 
 /* Hover */
 #tablaEstadisticas tbody tr:hover {
-    background-color: #ffe5e8; /* rosado suave */
+    background-color: #f1dbdd; /* rosado suave */
     color: #2c2c2c;            /* texto negro */
     transition: 0.3s;
 }

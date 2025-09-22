@@ -247,16 +247,18 @@ footer {
     transition: all 0.3s ease;
 }
 
-.bases-btn {
-    background-color: #ffffff;   /* Fondo blanco */
-    color: #ef3340;              /* Texto rojo */
-    border: 2px solid #ef3340;   /* Borde rojo */
-    border-radius: 8px;          /* Esquinas redondeadas */
-    padding: 8px 20px;           /* Espaciado interno */
+.hero .btn bases-btn {
+    margin-top: 16px; /* lo coloca justo debajo del h2 */
+    padding: 10px 24px;
+    background-color: blue;
+    color: #ef3340;
     font-family: 'Righteous', sans-serif;
-    font-size: 14px;
-    text-decoration: none;       /* Quita subrayado */
-    transition: all 0.3s ease;  /* Transición suave al hover */
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none; /* quita el subrayado */
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .hero .btn:hover {

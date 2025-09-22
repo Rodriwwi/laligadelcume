@@ -433,3 +433,18 @@ footer {
         margin-left: 10px;      /* separación del otro botón */
     }
 }
+
+.playoff-winner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('images/campeones.png'); /* tu imagen */
+    background-size: cover;      /* ocupa todo el área */
+    background-position: center; /* centrada */
+    background-repeat: no-repeat;
+    height: 150px;               /* ajusta según tu diseño */
+    border-radius: 12px;
+    color: white;                /* si quieres texto encima */
+    font-family: 'Righteous', sans-serif;
+    text-align: center;
+}
