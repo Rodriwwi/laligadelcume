@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal del Árbitro - LALIGA DEL CUMe</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Righteous">
+    <style>
+        body {
+            font-family: 'Righteous', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ef3340;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 16px;
+            color: #2c2c2c;
+        }
+
+        select,
+        input[type="text"],
+        input[type="time"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #cccccc;
+            font-size: 14px;
+        }
+
+        .inline-inputs {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .inline-inputs .form-group {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        button {
+            background: #ef3340;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #d12a36;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: #ef3340;
+            margin-top: 10px;
+        }
+
+        #ver-jugadores-container {
+            margin-top: 20px;
+        }
+
+        #ver-jugadores-btn {
+            background: #ef3340;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        #jugadores-equipos {
+            display: none;
+            margin-top: 10px;
+            color: #2c2c2c;
+        }
+
+        .equipo-card {
+            background: #f5f5f5;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .equipo-header {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #ef3340;
+            color: white;
+        }
+
+        .equipo-logo img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .equipo-nombre {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .equipo-detalle {
+            display: none;
+            padding: 10px;
+        }
+
+        .equipo-jugadores {
+            margin-top: 10px;
+        }
+
+        .jugadores-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .jugador-card {
+            text-align: center;
+            width: 80px;
+        }
+
+        .jugador-card img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .jugador-nombre {
+            color: #2c2c2c
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer img {
+            max-height: 50px;
+            margin: 10px;
+        }
+
+        /* --- LOGIN --- */
+        #login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 9999;
+        }
+
+        .login-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-box h2 {
+            margin-bottom: 20px;
+            color: #ef3340;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .login-box button {
+            background: #ef3340;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .login-box button:hover {
+            background: #d12a36;
+        }
+
+        #error-msg {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Pantalla de login -->
+    <div id="login-screen">
+        <div class="login-box">
+            <h2>Acceso al portal del árbitro</h2>
+            <input type="password" id="password" placeholder="Introduce la contraseña">
+            <button onclick="checkPassword()">Entrar</button>
+            <p id="error-msg">Contraseña incorrecta</p>
+        </div>
+    </div>
+
+    <!-- Contenido protegido -->
+    <div id="content" style="display:none;">
+
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="logoLiga">
+                <a href="index.html"><img src="images/logoLigaRojo.png" alt="CECUME logo" class="img"></a>
+                <h1></h1>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+            <ul class="nav-links" id="nav-links" style="border-right: 40px solid;">
+                <li><a href="LALIGA Normas 2526 v1.0.pdf" target="_blank"
+                        style="color:#2c2c2c; font-family:Righteous;">BASES</a></li>
+            </ul>
+        </nav>
+
+        <!-- Contenedor principal -->
+        <div class="container">
+            <h1>PORTAL DEL ÁRBITRO</h1>
+            <div class="form-group">
+                <label for="equipoLocal">EQUIPO LOCAL:</label>
+                <select id="equipoLocal">
+                    <option value="">Cargando equipos...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="equipoVisitante">EQUIPO VISITANTE:</label>
+                <select id="equipoVisitante">
+                    <option value="">Cargando equipos...</option>
+                </select>
+            </div>
+            <div class="inline-inputs">
+                <div class="form-group"><label for="arbitro">ÁRBITRO:</label><input type="text" id="arbitro"
+                        placeholder="Nombre del árbitro"></div>
+                <div class="form-group"><label for="lugar">LUGAR:</label><input type="text" id="lugar"
+                        placeholder="Lugar del partido"></div>
+                <div class="form-group"><label for="hora">HORA:</label><input type="time" id="hora"></div>
+            </div>
+            <button id="generarActa">Generar Acta</button>
+            <div id="loading" class="loading">Generando acta, por favor espere...</div>
+
+            <!-- Desplegable de jugadores -->
+            <div id="ver-jugadores-container">
+                <button id="ver-jugadores-btn">VER JUGADORES DE EQUIPOS</button>
+                <div id="jugadores-equipos"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-logo"><img src="images/logoLigaNuevo.png" alt="Logo Liga"></div>
+            <hr class="footer-separator">
+            <h2 class="footer-title">COLABORADORES</h2>
+            <div class="footer-logos">
+                <div class="logo-container logo-cecume"><a href="https://www.cecume.org" target="_blank"><img
+                            src="images/cecume.png" alt="CECUME logo"></a></div>
+                <div class="logo-container logo-merida"><a href="https://merida.es" target="_blank"><img
+                            src="images/aytoMerida.png" alt="Ayto Mérida logo"></a></div>
+                <div class="logo-container logo-safyde"><a href="https://safyde.unex.es" target="_blank"><img
+                            src="images/safyde.png" alt="Safyde logo"></a></div>
+            </div>
+        </footer>
+
+    </div> <!-- cierre de #content -->
+
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <script>
+        // --- Protección con contraseña ---
+        const PASSWORD = "1234"; // enhorabuena, me has pillado! :P
+
+        function checkPassword() {
+            const input = document.getElementById("password").value;
+            const errorMsg = document.getElementById("error-msg");
+            if (input === PASSWORD) {
+                document.getElementById("login-screen").style.display = "none";
+                document.getElementById("content").style.display = "block";
+            } else {
+                errorMsg.style.display = "block";
+            }
+        }
+    </script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            const plantillaPath = "excels/plantilla_Acta.xlsx";
+            const equiposPath = "excels/equipos_actas.xlsx";
+            let equiposData = {};
+            let plantillaWorkbook;
+
+            const generarActaBtn = document.getElementById("generarActa");
+            const loadingDiv = document.getElementById("loading");
+            const selectLocal = document.getElementById("equipoLocal");
+            const selectVisitante = document.getElementById("equipoVisitante");
+
+            // --- Cargar equipos ---
+            try {
+                const responseEquipos = await fetch(equiposPath);
+                const arrayBufferEquipos = await responseEquipos.arrayBuffer();
+                const workbookEquipos = XLSX.read(arrayBufferEquipos, { type: "array" });
+
+                workbookEquipos.SheetNames.forEach(sheetName => {
+                    const sheet = workbookEquipos.Sheets[sheetName];
+                    const data = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false, defval: "" });
+                    equiposData[sheetName] = data;
+                });
+
+                // Llenar selects
+                selectLocal.innerHTML = '<option value="">Selecciona un equipo</option>';
+                selectVisitante.innerHTML = '<option value="">Selecciona un equipo</option>';
+                Object.keys(equiposData).forEach(team => {
+                    const optLocal = document.createElement("option"); optLocal.value = team; optLocal.textContent = team; selectLocal.appendChild(optLocal);
+                    const optVisitante = document.createElement("option"); optVisitante.value = team; optVisitante.textContent = team; selectVisitante.appendChild(optVisitante);
+                });
+            } catch (err) { console.error("Error cargando equipos:", err); alert("No se pudo cargar el archivo de equipos."); return; }
+
+            // --- Cargar plantilla ---
+            try {
+                const responsePlantilla = await fetch(plantillaPath);
+                const arrayBufferPlantilla = await responsePlantilla.arrayBuffer();
+                plantillaWorkbook = XLSX.read(arrayBufferPlantilla, { type: "array", cellStyles: true, cellNF: true, cellDates: true });
+            } catch (err) { console.error("Error plantilla:", err); alert("No se pudo cargar la plantilla."); return; }
+
+            // --- Generar Acta ---
+            generarActaBtn.addEventListener("click", async () => {
+                const equipoLocal = selectLocal.value;
+                const equipoVisitante = selectVisitante.value;
+                const arbitro = document.getElementById("arbitro").value;
+                const lugar = document.getElementById("lugar").value;
+                const hora = document.getElementById("hora").value;
+
+                if (!equipoLocal || !equipoVisitante) { alert("Selecciona ambos equipos."); return; }
+                if (equipoLocal === equipoVisitante) { alert("Los equipos no pueden ser iguales."); return; }
+
+                generarActaBtn.disabled = true; loadingDiv.style.display = 'block';
+
+                try {
+                    const arrayBufferCopy = XLSX.write(plantillaWorkbook, { type: "array", bookType: "xlsx", cellStyles: true });
+                    const workbookCopy = XLSX.read(arrayBufferCopy, { type: "array", cellStyles: true, cellNF: true, cellDates: true });
+                    const worksheet = workbookCopy.Sheets["ACTA"];
+
+                    const updateCell = (addr, val) => {
+                        if (!worksheet[addr]) worksheet[addr] = { v: val, t: 's' };
+                        else { worksheet[addr].v = val; worksheet[addr].t = 's'; }
+                    }
+
+                    updateCell("C2", equipoLocal);
+                    updateCell("C3", equipoVisitante);
+                    updateCell("M3", arbitro || "");
+                    updateCell("T3", hora || "");
+                    if (lugar) updateCell("H3", lugar);
+
+                    // Jugadores locales
+                    const jugadoresLocal = equiposData[equipoLocal].slice(4, 15);
+                    jugadoresLocal.forEach((row, idx) => { const r = 7 + idx; updateCell(`A${r}`, row[0] || ""); updateCell(`B${r}`, row[1] || ""); updateCell(`C${r}`, row[1] || ""); });
+                    // Jugadores visitantes
+                    const jugadoresVisitante = equiposData[equipoVisitante].slice(4, 15);
+                    jugadoresVisitante.forEach((row, idx) => { const r = 7 + idx; updateCell(`L${r}`, row[0] || ""); updateCell(`M${r}`, row[1] || ""); updateCell(`N${r}`, row[1] || ""); updateCell(`O${r}`, row[1] || ""); updateCell(`P${r}`, row[1] || ""); updateCell(`Q${r}`, row[1] || ""); });
+                    // Escudos
+                    if (equiposData[equipoLocal][0]) updateCell("E22", equiposData[equipoLocal][0][0] || "");
+                    if (equiposData[equipoVisitante][0]) updateCell("U22", equiposData[equipoVisitante][0][0] || "");
+
+                    if (worksheet['!ref']) { const range = XLSX.utils.decode_range(worksheet['!ref']); if (range.e.r < 21) range.e.r = 21; if (range.e.c < 20) range.e.c = 20; worksheet['!ref'] = XLSX.utils.encode_range(range); }
+
+                    const wbout = XLSX.write(workbookCopy, { bookType: 'xlsx', type: 'array', cellStyles: true });
+                    saveAs(new Blob([wbout], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }), `Acta_${equipoLocal}_vs_${equipoVisitante}.xlsx`);
+                } catch (err) { console.error("Error generando acta:", err); alert("Hubo un error generando el acta."); }
+                finally { generarActaBtn.disabled = false; loadingDiv.style.display = 'none'; }
+            });
+
+            // --- Mostrar jugadores de equipos ---
+            const verJugadoresBtn = document.getElementById("ver-jugadores-btn");
+            const jugadoresContainer = document.getElementById("jugadores-equipos");
+
+            verJugadoresBtn.addEventListener("click", () => {
+                jugadoresContainer.innerHTML = "";
+                Object.keys(equiposData).forEach(team => {
+                    const eq = equiposData[team];
+                    const div = document.createElement("div");
+                    div.className = "equipo-card";
+                    div.innerHTML = `
+                <div class="equipo-header">
+                    <div class="equipo-logo"><img src="${eq[0][0] || ''}" alt="Escudo"></div>
+                    <div class="equipo-nombre">${team}</div>
+                </div>
+                <div class="equipo-detalle" style="display:block;">
+                    <div class="equipo-jugadores">
+                        <h3>JUGADORES</h3>
+                        <div class="jugadores-grid">
+                            ${eq.slice(4, 15).map(j => `<div class="jugador-card"><img src="${j[2] || ''}" alt=""><span class="jugador-nombre">${j[1] || ''}</span></div>`).join('')}
+                        </div>
+                    </div>
+                </div>`;
+                    jugadoresContainer.appendChild(div);
+                });
+                jugadoresContainer.style.display = jugadoresContainer.style.display === "block" ? "none" : "block";
+            });
+        });
+    </script>
+</body>
+
+</html>
