@@ -135,3 +135,20 @@ footer {
 .logo:hover {
     transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el mouse */
 }
+
+.banner-cierre {
+    background-color: #10ccbf; /* el color que quieras */
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .banner-cierre {
+        background-color: #10ccbf; /* Móvil */
+    }
+}
+

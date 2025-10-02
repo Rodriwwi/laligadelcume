@@ -19,12 +19,20 @@
 </head>
 
 <body>
-    <div style="background-color: #ef3340; height: 404px; border-top: 82px solid;">
+    <div style="background-color: #ef3340; height: 364px; border-top: 82px solid;">
         <div class="hero">
             <h1>INSCRIPCIONES ABIERTAS</h1>
             <h2 style="font-family: Righteous;">TEMPORADA 2025/2026</h2>
             <a href="https://forms.gle/AZAwZjxDBY2F9Ka5A" class="btn" target="_blank">INSCRIBE A TU EQUIPO</a>
             <a href="LALIGA Normas 2526 v1.0.pdf" class="btn bases-btn mobile-only" target="_blank">BASES</a>
+        </div>
+    </div>
+    <!-- Banner de Cierre de Inscripciones -->
+    <div style="background-color: #137649; height: 100px; border-top: 0px solid;">
+        <div class="banner-cierre"
+            style="height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff">
+            <h1 style="font-size: 20px; margin-bottom: 10px; font-family: Righteous;">CIERRE DE INSCRIPCIONES</h1>
+            <div id="countdown" style="font-size: 18px; font-weight: bold; font-family: Righteous; margin-bottom: 10px;"></div>
         </div>
     </div>
     <div class="estadisticas">
@@ -167,5 +175,33 @@
     </footer>
     <script src="scripts/script.js"></script>
 </body>
+
+<script>
+    // Fecha límite: 10 octubre 2025 a las 23:59:59
+    const deadline = new Date("Oct 10, 2025 23:59:59").getTime();
+
+    const countdown = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = deadline - now;
+
+        if (distance <= 0) {
+            clearInterval(countdown);
+            document.getElementById("countdown").innerHTML = "00:00:00";
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Formato con 2 dígitos
+        const format = (num) => num.toString().padStart(2, '0');
+
+        document.getElementById("countdown").innerHTML =
+            `${format(days)}D : ${format(hours)}H : ${format(minutes)}M : ${format(seconds)}S `;
+    }, 1000);
+</script>
+
 
 </html>

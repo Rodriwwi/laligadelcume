@@ -71,7 +71,23 @@
     height: 6px;
     width: 100%;               /* ahora ocupa todo el ancho del card */
     border-radius: 3px;
-    background-color: #024a00;
+    background-color: #036700;
+    margin: 12px 0;
+}
+
+.equipo-separador-morante {
+    height: 6px;
+    width: 100%;               /* ahora ocupa todo el ancho del card */
+    border-radius: 3px;
+    background-color: #c50000;
+    margin: 12px 0;
+}
+
+.equipo-separador-cerveza {
+    height: 6px;
+    width: 100%;               /* ahora ocupa todo el ancho del card */
+    border-radius: 3px;
+    background-color: #000000;
     margin: 12px 0;
 }
 
