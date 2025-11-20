@@ -7,10 +7,17 @@
     <title>Portal del Árbitro - LALIGA DEL CUMe</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Righteous">
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-VZXFXDQZ1C');
+    </script>
     <style>
         body {
             font-family: 'Righteous', sans-serif;
-            margin: 0;
+            margin-top: 100px;
             padding: 0;
             background: #f5f5f5;
         }
@@ -70,13 +77,27 @@
             font-size: 16px;
             border-radius: 8px;
             cursor: pointer;
-            display: block;
-            margin: 0 auto;
             transition: 0.3s;
         }
 
         button:hover {
             background: #d12a36;
+        }
+
+        /* --- Nuevo estilo para el botón SUBIR ACTA --- */
+        .btn-secondary {
+            background: #007BFF;
+            margin-left: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: #0056b3;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
         }
 
         .loading {
@@ -88,10 +109,11 @@
 
         #ver-jugadores-container {
             margin-top: 20px;
+            text-align: center;
         }
 
         #ver-jugadores-btn {
-            background: #ef3340;
+            background: #efa433;
             color: white;
             padding: 10px 15px;
             border: none;
@@ -188,7 +210,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.85);
+            background: #10ccb0;
             z-index: 9999;
         }
 
@@ -243,7 +265,7 @@
     <!-- Pantalla de login -->
     <div id="login-screen">
         <div class="login-box">
-            <h2>Acceso al portal del árbitro</h2>
+            <h2>PORTAL DEL ÁRBITRO</h2>
             <input type="password" id="password" placeholder="Introduce la contraseña">
             <button onclick="checkPassword()">Entrar</button>
             <p id="error-msg">Contraseña incorrecta</p>
@@ -253,16 +275,20 @@
     <!-- Contenido protegido -->
     <div id="content" style="display:none;">
 
-        <!-- Navbar -->
         <nav class="navbar">
-            <div class="logoLiga">
-                <a href="index.html"><img src="images/logoLigaRojo.png" alt="CECUME logo" class="img"></a>
-                <h1></h1>
+            <div class="logoLiga"> <a href="index.html"> <img src="images/logoLigaRojo.png" alt="CECUME logo"
+                        class="img">
+                </a>
             </div>
             <div class="menu-toggle" id="menu-toggle">&#9776;</div>
             <ul class="nav-links" id="nav-links" style="border-right: 40px solid;">
-                <li><a href="LALIGA Normas 2526 v1.0.pdf" target="_blank"
-                        style="color:#2c2c2c; font-family:Righteous;">BASES</a></li>
+                <li> <a href="calendario.html" target="_blank"
+                        style="color: #2c2c2c; font-family: Righteous;">CALENDARIO</a> </li>
+                <li> <a href="equipos.html" style="color: #2c2c2c; font-family: Righteous;">EQUIPOS</a> </li>
+                <li> <a href="estadisticas.html" style="color: #2c2c2c; font-family: Righteous;">ESTADÍSTICAS</a> </li>
+                <li> <a href="documentos/liga/LALIGA Normas 2526 v1.0.pdf" target="_blank"
+                        style="color: #2c2c2c; font-family: Righteous;">BASES</a> </li>
+                <li> <a href="actas.html" style="color: #2c2c2c; font-family: Righteous;">ÁRBITROS</a> </li>
             </ul>
         </nav>
 
@@ -288,7 +314,14 @@
                         placeholder="Lugar del partido"></div>
                 <div class="form-group"><label for="hora">HORA:</label><input type="time" id="hora"></div>
             </div>
-            <button id="generarActa">Generar Acta</button>
+
+            <!-- Botones centrados -->
+            <div class="button-group">
+                <button id="generarActa">GENERAR ACTA</button>
+                <button class="btn-secondary"
+                    onclick="window.open('https://forms.gle/7f8JhCEytuENw6TV9', '_blank')">SUBIR ACTA</button>
+            </div>
+
             <div id="loading" class="loading">Generando acta, por favor espere...</div>
 
             <!-- Desplegable de jugadores -->
@@ -319,8 +352,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
     <script>
-        // --- Protección con contraseña ---
-        const PASSWORD = "1234"; // enhorabuena, me has pillado! :P
+        // esos numerinos que se usan para entrar
+        const PASSWORD = "j4rayomariguano"; // enhorabuena, me has pillado! :P
 
         function checkPassword() {
             const input = document.getElementById("password").value;
@@ -335,7 +368,6 @@
     </script>
 
     <script>
-
         document.addEventListener("DOMContentLoaded", async () => {
             const plantillaPath = "excels/plantilla_Acta.xlsx";
             const equiposPath = "excels/equipos_actas.xlsx";
