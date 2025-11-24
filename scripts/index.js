@@ -75,7 +75,7 @@ const jornadas = {
             { local: "ATLÉTICO MORANTE", visitante: "ASTON BIRRA", colorLocal: "#c50000", colorVisitante: "#000000" }
         ]),
         resultados: crearResultados([
-            { local: "CUM UNITED", visitante: "UNIÓN DEPORTIVA PORRETA", resultado: "vs", fecha: "POR DEFINIR", esAplazado: true },
+            { local: "CUM UNITED", visitante: "UNIÓN DEPORTIVA PORRETA", resultado: "vs", fecha: "24 NOV | 17:30h", lugar:"CIUDAD DEPORTIVA", esAplazado: true },
             { local: "I.E. SALA", visitante: "RAYO MARIGUANO", resultado: "10 - 1", fecha: "27 OCT | 21:00h", lugar: "POLIDEPORTIVO DIÓCLES", acta: "/actas/j2/iesala-rayo.xlsx" },
             { local: "ATLÉTICO MORANTE", visitante: "ASTON BIRRA", resultado: "6 - 2", fecha: "04 NOV | 21:30h", lugar: "CIUDAD DEPORTIVA", acta: "/actas/j2/morante-aston.xlsx" }
         ], "CUM CITY")
@@ -103,8 +103,8 @@ const jornadas = {
             { local: "ATLÉTICO MORANTE", visitante: "UNIÓN DEPORTIVA PORRETA", colorLocal: "#BB284F", colorVisitante: "#000000" }
         ]),
         resultados: crearResultados([
-            { local: "CUM UNITED", visitante: "I.E. SALA", resultado: "vs", fecha: "POR DEFINIR" },
-            { local: "CUM CITY", visitante: "ASTON BIRRA", resultado: "vs", fecha: "POR DEFINIR" },
+            { local: "CUM UNITED", visitante: "I.E. SALA", resultado: "vs", fecha: "POR DEFINIR", esAplazado: true },
+            { local: "CUM CITY", visitante: "ASTON BIRRA", resultado: "vs", fecha: "26 NOV | 21:30h", lugar: "CIUDAD DEPORTIVA"},
             { local: "ATLÉTICO MORANTE", visitante: "UNIÓN DEPORTIVA PORRETA", resultado: "vs", fecha: "POR DEFINIR" }
         ], "RAYO MARIGUANO")
     }
@@ -130,7 +130,6 @@ function crearResultados(partidos, arbitro) {
         const botonesHTML = [];
         if (p.acta) botonesHTML.push(`<button class="btn-acta" onclick="generarActaDesdeArchivo('${p.acta}')">ACTA</button>`);
         if (p.incidencias) botonesHTML.push(`<button class="btn-inci" onclick="window.open('${p.incidencias}', '_blank')">INCIDENCIAS</button>`);
-        if (p.esAplazado) botonesHTML.push(`<button class="btn-aplazado" onclick="window.open('/actas/j2/comunicadoAplazamiento.pdf', '_blank')">DOCUMENTO</button>`);
 
         const lugarHTML = p.lugar ? `<p class="lugar">${p.lugar}</p>` : '';
         const aplazadoLabel = p.esAplazado ? '<p class="lugar" style="font-size:0.4em;">[APLAZADO]</p>' : '';
