@@ -15,192 +15,170 @@
         gtag('config', 'G-VZXFXDQZ1C');
     </script>
     <style>
+        /* --- ESTILOS GENERALES --- */
         body {
             font-family: 'Righteous', sans-serif;
             margin-top: 100px;
-            padding: 0;
-            background: #f5f5f5;
+            padding: 20px;
+            background: #f0f2f5;
+            /* Fondo general un poco más oscuro para contraste */
         }
 
         .container {
-            max-width: 900px;
-            margin: 40px auto;
+            max-width: 800px;
+            margin: 0 auto;
             background: #fff;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
         }
 
         h1 {
             text-align: center;
             color: #ef3340;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
         }
 
+        /* --- CLASE MAESTRA: TARJETAS DE PASOS (El estilo que te gusta) --- */
+        .step-card {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 30px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-color: #d0d0d0;
+        }
+
+        .step-header {
+            color: #ef3340;
+            font-weight: 900;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ef3340;
+            padding-bottom: 10px;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        /* --- FORMULARIOS E INPUTS --- */
         .form-group {
             margin-bottom: 20px;
         }
 
         label {
             display: block;
-            margin-bottom: 6px;
-            font-size: 16px;
-            color: #2c2c2c;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #555;
+            font-weight: bold;
         }
 
+        /* Estilo unificado para todos los inputs y selects */
         select,
         input[type="text"],
-        input[type="time"] {
+        input[type="time"],
+        input[type="file"] {
             width: 100%;
-            padding: 10px;
+            padding: 12px 15px;
             border-radius: 8px;
-            border: 1px solid #cccccc;
-            font-size: 14px;
+            border: 2px solid #e0e0e0;
+            background: #fff;
+            font-size: 15px;
+            font-weight: 500;
+            color: #333;
+            box-sizing: border-box;
+            /* Importante para que no se salgan */
+            transition: all 0.3s ease;
         }
 
+        select:focus,
+        input:focus {
+            border-color: #ef3340;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(239, 51, 64, 0.1);
+        }
+
+        /* Layout para inputs en línea (Arbitro, Lugar, Hora) */
         .inline-inputs {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            flex-wrap: wrap;
         }
 
-        .inline-inputs .form-group {
-            flex: 1;
-            min-width: 150px;
-        }
-
+        /* --- BOTONES --- */
         button {
-            background: #ef3340;
-            color: white;
-            border: none;
-            padding: 12px 20px;
+            width: 100%;
+            padding: 15px;
             font-size: 16px;
+            font-weight: bold;
+            border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: background 0.3s ease, transform 0.1s;
+            text-transform: uppercase;
+            font-family: 'Righteous', sans-serif;
         }
 
-        button:hover {
+        button:active {
+            transform: scale(0.98);
+        }
+
+        #generarActa {
+            background: #2c2c2c;
+            /* Negro elegante para generar */
+            color: white;
+        }
+
+        #generarActa:hover {
+            background: #444;
+        }
+
+        #btnSubirSupabase {
+            background: #ef3340;
+            /* Rojo corporativo para subir (acción final) */
+            color: white;
+            margin-top: 15px;
+        }
+
+        #btnSubirSupabase:hover {
             background: #d12a36;
         }
 
-        /* --- Nuevo estilo para el botón SUBIR ACTA --- */
-        .btn-secondary {
-            background: #007BFF;
-            margin-left: 10px;
-        }
-
-        .btn-secondary:hover {
-            background: #0056b3;
-        }
-
-        .button-group {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
-            color: #ef3340;
-            margin-top: 10px;
-        }
-
+        /* Botón secundario (Ver jugadores) */
         #ver-jugadores-container {
-            margin-top: 20px;
             text-align: center;
+            margin-top: 40px;
         }
 
         #ver-jugadores-btn {
             background: #efa433;
             color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
+            width: auto;
+            padding: 10px 25px;
         }
 
-        #jugadores-equipos {
+        #ver-jugadores-btn:hover {
+            background: #d99020;
+        }
+
+        /* --- EXTRAS --- */
+        .loading {
             display: none;
+            text-align: center;
+            color: #ef3340;
             margin-top: 10px;
-            color: #2c2c2c;
-        }
-
-        .equipo-card {
-            background: #f5f5f5;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-
-        .equipo-header {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            background: #ef3340;
-            color: white;
-        }
-
-        .equipo-logo img {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-
-        .equipo-nombre {
-            font-size: 18px;
             font-weight: bold;
         }
 
-        .equipo-detalle {
-            display: none;
-            padding: 10px;
-        }
-
-        .equipo-jugadores {
-            margin-top: 10px;
-        }
-
-        .jugadores-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .jugador-card {
-            text-align: center;
-            width: 80px;
-        }
-
-        .jugador-card img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .jugador-nombre {
-            color: #2c2c2c
-        }
-
-        footer {
-            background: #222;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        footer img {
-            max-height: 50px;
-            margin: 10px;
-        }
-
-        /* --- LOGIN --- */
+        /* Login Screen */
         #login-screen {
             position: fixed;
             top: 0;
@@ -216,158 +194,328 @@
 
         .login-box {
             background: #fff;
-            padding: 30px;
-            border-radius: 12px;
+            padding: 40px;
+            border-radius: 16px;
             text-align: center;
-            width: 300px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .login-box h2 {
-            margin-bottom: 20px;
-            color: #ef3340;
-        }
-
-        .login-box input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
+            width: 90%;
+            max-width: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .login-box button {
             background: #ef3340;
-            border: none;
             color: white;
-            padding: 10px;
+            margin-top: 10px;
+        }
+
+        /* Estilos de las tarjetas de jugadores (ocultas por defecto) */
+        .equipo-card {
+            background: #f9f9f9;
             border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .equipo-header {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #333;
+            color: white;
+        }
+
+        .equipo-logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        .jugadores-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .jugador-card {
+            text-align: center;
+            width: 70px;
+            font-size: 12px;
+        }
+
+        .jugador-card img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-logo img {
+            max-width: 180px;
+            margin-bottom: 20px;
+        }
+
+        /* CORRECCIÓN: Color del nombre de los jugadores */
+        .jugador-nombre {
+            color: #2c2c2c;
+            /* Gris oscuro para que se lea sobre fondo blanco */
+            font-weight: bold;
+            /* Negrita para que resalte */
+            display: block;
+            /* Asegura que ocupe su propia línea */
+            margin-top: 5px;
+            line-height: 1.2;
+        }
+
+        /* --- ESTILOS DEL LOGIN (REDISEÑADO) --- */
+        #login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(239, 51, 64, 0.95);
+            /* Fondo rojo corporativo semitransparente */
+            backdrop-filter: blur(5px);
+            /* Efecto borroso elegante */
+            z-index: 9999;
+        }
+
+        .login-box {
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transform: translateY(0);
+            animation: fadeInUps 0.5s ease-out;
+        }
+
+        .login-box h2 {
+            color: #2c2c2c;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .login-box input {
+            width: 90%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+
+        .login-box input:focus {
+            border-color: #ef3340;
+            outline: none;
+        }
+
+        .login-box button {
+            background: #ef3340;
+            color: white;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(239, 51, 64, 0.3);
+            transition: transform 0.2s, background 0.2s;
         }
 
         .login-box button:hover {
             background: #d12a36;
+            transform: translateY(-2px);
         }
 
         #error-msg {
-            color: red;
-            font-size: 14px;
+            color: #ef3340;
+            margin-top: 20px;
+            font-weight: bold;
             display: none;
+            /* Oculto por defecto */
+            background: #ffe6e6;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        /* Pequeña animación de entrada */
+        @keyframes fadeInUps {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Pantalla de login -->
     <div id="login-screen">
         <div class="login-box">
-            <h2>PORTAL DEL ÁRBITRO</h2>
-            <input type="password" id="password" placeholder="Introduce la contraseña">
-            <button onclick="checkPassword()">Entrar</button>
-            <p id="error-msg">Contraseña incorrecta</p>
+            <h2 style="color:#ef3340; margin-bottom:20px;">ACCESO ÁRBITROS</h2>
+            <input type="password" id="password" placeholder="Contraseña de acceso">
+            <button onclick="checkPassword()">ENTRAR</button>
+            <p id="error-msg" style="color:red; display:none; margin-top:10px;">Contraseña incorrecta</p>
         </div>
     </div>
 
-    <!-- Contenido protegido -->
     <div id="content" style="display:none;">
 
         <nav class="navbar">
-            <div class="logoLiga"> <a href="index.html"> <img src="images/logoLigaRojo.png" alt="CECUME logo"
-                        class="img">
-                </a>
+            <div class="logoLiga">
+                <a href="index.html"> <img src="images/logoLigaRojo.png" alt="CECUME logo" class="img"> </a>
             </div>
-            <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-            <ul class="nav-links" id="nav-links" style="border-right: 40px solid;">
-                <li> <a href="calendario.html" target="_blank"
-                        style="color: #2c2c2c; font-family: Righteous;">CALENDARIO</a> </li>
-                <li> <a href="equipos.html" style="color: #2c2c2c; font-family: Righteous;">EQUIPOS</a> </li>
-                <li> <a href="estadisticas.html" style="color: #2c2c2c; font-family: Righteous;">ESTADÍSTICAS</a> </li>
-                <li> <a href="documentos/liga/LALIGA Normas 2526 v1.0.pdf" target="_blank"
-                        style="color: #2c2c2c; font-family: Righteous;">BASES</a> </li>
-                <li> <a href="actas.html" style="color: #2c2c2c; font-family: Righteous;">ÁRBITROS</a> </li>
-            </ul>
         </nav>
 
-        <!-- Contenedor principal -->
         <div class="container">
             <h1>PORTAL DEL ÁRBITRO</h1>
-            <div class="form-group">
-                <label for="equipoLocal">EQUIPO LOCAL:</label>
-                <select id="equipoLocal">
-                    <option value="">Cargando equipos...</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="equipoVisitante">EQUIPO VISITANTE:</label>
-                <select id="equipoVisitante">
-                    <option value="">Cargando equipos...</option>
-                </select>
-            </div>
-            <div class="inline-inputs">
-                <div class="form-group"><label for="arbitro">ÁRBITRO:</label><input type="text" id="arbitro"
-                        placeholder="Nombre del árbitro"></div>
-                <div class="form-group"><label for="lugar">LUGAR:</label><input type="text" id="lugar"
-                        placeholder="Lugar del partido"></div>
-                <div class="form-group"><label for="hora">HORA:</label><input type="time" id="hora"></div>
+
+            <div class="step-card">
+                <div class="step-header">1. DATOS DEL ENCUENTRO</div>
+
+                <div class="form-group">
+                    <label>JORNADA</label>
+                    <select id="jornadaSelect">
+                        <option value="5" selected>Jornada 5</option>
+                    </select>
+                </div>
+
+                <div class="inline-inputs" style="margin-bottom: 20px;">
+                    <div class="form-group">
+                        <label>EQUIPO LOCAL</label>
+                        <select id="equipoLocal">
+                            <option value="">Cargando...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>EQUIPO VISITANTE</label>
+                        <select id="equipoVisitante">
+                            <option value="">Cargando...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="inline-inputs">
+                    <div class="form-group">
+                        <label>ÁRBITRO</label>
+                        <input type="text" id="arbitro" placeholder="Nombre(s)">
+                    </div>
+                    <div class="form-group">
+                        <label>LUGAR</label>
+                        <input type="text" id="lugar" placeholder="Pista / Campo">
+                    </div>
+                    <div class="form-group">
+                        <label>HORA</label>
+                        <input type="time" id="hora">
+                    </div>
+                </div>
             </div>
 
-            <!-- Botones centrados -->
-            <div class="button-group">
-                <button id="generarActa">GENERAR ACTA</button>
-                <button class="btn-secondary"
-                    onclick="window.open('https://forms.gle/7f8JhCEytuENw6TV9', '_blank')">SUBIR ACTA</button>
+            <div class="step-card">
+                <div class="step-header">2. PLANTILLA DEL ACTA</div>
+                <p style="color:#666; margin-bottom:15px; font-size:14px;">
+                    Pulsa para descargar el acta del partido y así poder rellenarlo.
+                </p>
+                <button id="generarActa">DESCARGAR EXCEL</button>
+                <div id="loading" class="loading">⏳ Generando archivo...</div>
             </div>
 
-            <div id="loading" class="loading">Generando acta, por favor espere...</div>
+            <div class="step-card">
+                <div class="step-header">3. PUBLICAR ACTA</div>
+                <p style="color:#666; margin-bottom:15px; font-size:14px;">
+                    Sube aquí el acta en formato Excel (.xlsx) una vez rellenada para publicarla en la nube.
+                </p>
 
-            <!-- Desplegable de jugadores -->
+                <div class="form-group">
+                    <label for="archivoActaFinal"
+                        style="cursor: pointer; background: white; border: 2px dashed #ccc; padding: 30px; text-align: center; border-radius: 8px;">
+                        Seleccionar Archivo Excel
+                        <input type="file" id="archivoActaFinal" accept=".xlsx"
+                            style="display: block; margin: 10px auto;">
+                    </label>
+                </div>
+
+                <button id="btnSubirSupabase">SUBIR ACTA</button>
+                <p id="mensajeSubida" style="text-align:center; margin-top:15px; font-weight:bold; font-size: 1.1rem;">
+                </p>
+            </div>
+
             <div id="ver-jugadores-container">
-                <button id="ver-jugadores-btn">VER JUGADORES DE EQUIPOS</button>
-                <div id="jugadores-equipos"></div>
+                <button id="ver-jugadores-btn">CONSULTAR JUGADORES</button>
+                <div id="jugadores-equipos" style="margin-top:20px;"></div>
             </div>
-        </div>
 
-        <!-- Footer -->
+        </div>
         <footer>
             <div class="footer-logo"><img src="images/logoLigaNuevo.png" alt="Logo Liga"></div>
-            <hr class="footer-separator">
-            <h2 class="footer-title">COLABORADORES</h2>
-            <div class="footer-logos">
-                <div class="logo-container logo-cecume"><a href="https://www.cecume.org" target="_blank"><img
-                            src="images/cecume.png" alt="CECUME logo"></a></div>
-                <div class="logo-container logo-merida"><a href="https://merida.es" target="_blank"><img
-                            src="images/aytoMerida.png" alt="Ayto Mérida logo"></a></div>
-                <div class="logo-container logo-safyde"><a href="https://safyde.unex.es" target="_blank"><img
-                            src="images/safyde.png" alt="Safyde logo"></a></div>
-            </div>
         </footer>
 
-    </div> <!-- cierre de #content -->
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script>
-        // esos numerinos que se usan para entrar
-        const PASSWORD = "j4rayomariguano"; // enhorabuena, me has pillado! :P
-
+        const PASSWORD = "j5udp";
         function checkPassword() {
             const input = document.getElementById("password").value;
-            const errorMsg = document.getElementById("error-msg");
             if (input === PASSWORD) {
                 document.getElementById("login-screen").style.display = "none";
                 document.getElementById("content").style.display = "block";
             } else {
-                errorMsg.style.display = "block";
+                document.getElementById("error-msg").style.display = "block";
             }
         }
     </script>
 
     <script>
+        const supabaseUrl = 'https://omuhkqkjwoibsayyvuag.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9tdWhrcWtqd29pYnNheXl2dWFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ2NjE0NjMsImV4cCI6MjA4MDIzNzQ2M30.lZgweY5PS3UmF1zJ5ocUuHGmuoyTuVFF_9BS5xw2VXY';
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        const ALIAS_EQUIPOS = {
+            "RAYO MARIGUANO": "rayo",
+            "UNIÓN DEPORTIVA PORRETA": "udp",
+            "ATLÉTICO MORANTE": "morante",
+            "CUM CITY": "city",
+            "ASTON BIRRA": "aston",
+            "I.E. SALA": "iesala",
+            "CUM UNITED": "united"
+        };
+
+        function obtenerAlias(nombre) {
+            return ALIAS_EQUIPOS[nombre] || nombre.toLowerCase().replace(/\s+/g, '').substring(0, 10);
+        }
+
         document.addEventListener("DOMContentLoaded", async () => {
             const plantillaPath = "excels/plantilla_Acta.xlsx";
             const equiposPath = "excels/equipos_actas.xlsx";
@@ -379,107 +527,113 @@
             const selectLocal = document.getElementById("equipoLocal");
             const selectVisitante = document.getElementById("equipoVisitante");
 
-            // --- Cargar equipos ---
-            try {
-                const responseEquipos = await fetch(equiposPath);
-                const arrayBufferEquipos = await responseEquipos.arrayBuffer();
-                const workbookEquipos = XLSX.read(arrayBufferEquipos, { type: "array" });
+            const fileInput = document.getElementById('archivoActaFinal');
+            const btnSubir = document.getElementById('btnSubirSupabase');
+            const msgSubida = document.getElementById('mensajeSubida');
 
-                workbookEquipos.SheetNames.forEach(sheetName => {
-                    const sheet = workbookEquipos.Sheets[sheetName];
-                    const data = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false, defval: "" });
-                    equiposData[sheetName] = data;
+            // 1. Cargar Datos
+            try {
+                const respEquipos = await fetch(equiposPath);
+                const buffEquipos = await respEquipos.arrayBuffer();
+                const wbEquipos = XLSX.read(buffEquipos, { type: "array" });
+                wbEquipos.SheetNames.forEach(name => {
+                    const sheet = wbEquipos.Sheets[name];
+                    equiposData[name] = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false, defval: "" });
                 });
 
-                // Llenar selects
-                selectLocal.innerHTML = '<option value="">Selecciona un equipo</option>';
-                selectVisitante.innerHTML = '<option value="">Selecciona un equipo</option>';
+                const respPlantilla = await fetch(plantillaPath);
+                const buffPlantilla = await respPlantilla.arrayBuffer();
+                plantillaWorkbook = XLSX.read(buffPlantilla, { type: "array", cellStyles: true });
+
+                selectLocal.innerHTML = '<option value="">Selecciona Local</option>';
+                selectVisitante.innerHTML = '<option value="">Selecciona Visitante</option>';
                 Object.keys(equiposData).forEach(team => {
-                    const optLocal = document.createElement("option"); optLocal.value = team; optLocal.textContent = team; selectLocal.appendChild(optLocal);
-                    const optVisitante = document.createElement("option"); optVisitante.value = team; optVisitante.textContent = team; selectVisitante.appendChild(optVisitante);
+                    selectLocal.add(new Option(team, team));
+                    selectVisitante.add(new Option(team, team));
                 });
-            } catch (err) { console.error("Error cargando equipos:", err); alert("No se pudo cargar el archivo de equipos."); return; }
+            } catch (err) { console.error(err); alert("Error cargando archivos base."); }
 
-            // --- Cargar plantilla ---
-            try {
-                const responsePlantilla = await fetch(plantillaPath);
-                const arrayBufferPlantilla = await responsePlantilla.arrayBuffer();
-                plantillaWorkbook = XLSX.read(arrayBufferPlantilla, { type: "array", cellStyles: true, cellNF: true, cellDates: true });
-            } catch (err) { console.error("Error plantilla:", err); alert("No se pudo cargar la plantilla."); return; }
-
-            // --- Generar Acta ---
+            // 2. Generar Acta
             generarActaBtn.addEventListener("click", async () => {
-                const equipoLocal = selectLocal.value;
-                const equipoVisitante = selectVisitante.value;
+                const local = selectLocal.value;
+                const visitante = selectVisitante.value;
+                const jornada = document.getElementById("jornadaSelect").value;
                 const arbitro = document.getElementById("arbitro").value;
-                const lugar = document.getElementById("lugar").value;
                 const hora = document.getElementById("hora").value;
+                const lugar = document.getElementById("lugar").value;
 
-                if (!equipoLocal || !equipoVisitante) { alert("Selecciona ambos equipos."); return; }
-                if (equipoLocal === equipoVisitante) { alert("Los equipos no pueden ser iguales."); return; }
+                if (!local || !visitante) return alert("Selecciona equipos.");
 
-                generarActaBtn.disabled = true; loadingDiv.style.display = 'block';
+                generarActaBtn.disabled = true;
+                loadingDiv.style.display = 'block';
 
                 try {
-                    const arrayBufferCopy = XLSX.write(plantillaWorkbook, { type: "array", bookType: "xlsx", cellStyles: true });
-                    const workbookCopy = XLSX.read(arrayBufferCopy, { type: "array", cellStyles: true, cellNF: true, cellDates: true });
-                    const worksheet = workbookCopy.Sheets["ACTA"];
+                    const idGenerado = `j${jornada}_${obtenerAlias(local)}_${obtenerAlias(visitante)}`;
+                    const wbCopy = XLSX.read(XLSX.write(plantillaWorkbook, { type: "array", bookType: "xlsx" }), { type: "array" });
+                    const ws = wbCopy.Sheets["ACTA"];
+                    const setCell = (c, v) => { if (!ws[c]) ws[c] = { t: 's', v: '' }; ws[c].v = v; };
 
-                    const updateCell = (addr, val) => {
-                        if (!worksheet[addr]) worksheet[addr] = { v: val, t: 's' };
-                        else { worksheet[addr].v = val; worksheet[addr].t = 's'; }
-                    }
+                    setCell("C2", local); setCell("C3", visitante);
+                    setCell("M3", arbitro || ""); setCell("T3", hora || "");
+                    if (lugar) setCell("H3", lugar);
 
-                    updateCell("C2", equipoLocal);
-                    updateCell("C3", equipoVisitante);
-                    updateCell("M3", arbitro || "");
-                    updateCell("T3", hora || "");
-                    if (lugar) updateCell("H3", lugar);
+                    const jugL = equiposData[local].slice(4, 15);
+                    jugL.forEach((row, i) => { setCell(`A${7 + i}`, row[0] || ""); setCell(`B${7 + i}`, row[1] || ""); setCell(`C${7 + i}`, row[1] || ""); });
 
-                    // Jugadores locales
-                    const jugadoresLocal = equiposData[equipoLocal].slice(4, 15);
-                    jugadoresLocal.forEach((row, idx) => { const r = 7 + idx; updateCell(`A${r}`, row[0] || ""); updateCell(`B${r}`, row[1] || ""); updateCell(`C${r}`, row[1] || ""); });
-                    // Jugadores visitantes
-                    const jugadoresVisitante = equiposData[equipoVisitante].slice(4, 15);
-                    jugadoresVisitante.forEach((row, idx) => { const r = 7 + idx; updateCell(`L${r}`, row[0] || ""); updateCell(`M${r}`, row[1] || ""); updateCell(`N${r}`, row[1] || ""); updateCell(`O${r}`, row[1] || ""); updateCell(`P${r}`, row[1] || ""); updateCell(`Q${r}`, row[1] || ""); });
-                    // Escudos
-                    if (equiposData[equipoLocal][0]) updateCell("E22", equiposData[equipoLocal][0][0] || "");
-                    if (equiposData[equipoVisitante][0]) updateCell("U22", equiposData[equipoVisitante][0][0] || "");
+                    const jugV = equiposData[visitante].slice(4, 15);
+                    jugV.forEach((row, i) => { setCell(`L${7 + i}`, row[0] || ""); setCell(`M${7 + i}`, row[1] || ""); setCell(`N${7 + i}`, row[1] || ""); });
 
-                    if (worksheet['!ref']) { const range = XLSX.utils.decode_range(worksheet['!ref']); if (range.e.r < 21) range.e.r = 21; if (range.e.c < 20) range.e.c = 20; worksheet['!ref'] = XLSX.utils.encode_range(range); }
+                    if (equiposData[local][0]) setCell("E22", equiposData[local][0][0] || "");
+                    if (equiposData[visitante][0]) setCell("U22", equiposData[visitante][0][0] || "");
 
-                    const wbout = XLSX.write(workbookCopy, { bookType: 'xlsx', type: 'array', cellStyles: true });
-                    saveAs(new Blob([wbout], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }), `Acta_${equipoLocal}_vs_${equipoVisitante}.xlsx`);
-                } catch (err) { console.error("Error generando acta:", err); alert("Hubo un error generando el acta."); }
+                    XLSX.writeFile(wbCopy, `${idGenerado}.xlsx`);
+
+                } catch (err) { console.error(err); alert("Error generando excel."); }
                 finally { generarActaBtn.disabled = false; loadingDiv.style.display = 'none'; }
             });
 
-            // --- Mostrar jugadores de equipos ---
-            const verJugadoresBtn = document.getElementById("ver-jugadores-btn");
-            const jugadoresContainer = document.getElementById("jugadores-equipos");
+            // 3. Subir
+            btnSubir.addEventListener('click', async () => {
+                const file = fileInput.files[0];
+                if (!file) return alert("Selecciona el archivo Excel.");
 
-            verJugadoresBtn.addEventListener("click", () => {
-                jugadoresContainer.innerHTML = "";
+                const nombreArchivo = file.name;
+                btnSubir.disabled = true;
+                msgSubida.textContent = "Subiendo...";
+                msgSubida.style.color = "blue";
+
+                try {
+                    const { data, error } = await supabase.storage
+                        .from('actas')
+                        .upload(nombreArchivo, file, { cacheControl: '0', upsert: true });
+
+                    if (error) throw error;
+
+                    msgSubida.textContent = `✅ ¡ACTA "${nombreArchivo}" SUBIDA!`;
+                    msgSubida.style.color = "green";
+                    fileInput.value = "";
+
+                } catch (err) {
+                    console.error(err);
+                    msgSubida.textContent = "❌ Error: " + err.message;
+                    msgSubida.style.color = "red";
+                } finally {
+                    btnSubir.disabled = false;
+                }
+            });
+
+            // Ver Jugadores
+            document.getElementById("ver-jugadores-btn").addEventListener("click", () => {
+                const container = document.getElementById("jugadores-equipos");
+                container.innerHTML = "";
                 Object.keys(equiposData).forEach(team => {
                     const eq = equiposData[team];
                     const div = document.createElement("div");
                     div.className = "equipo-card";
-                    div.innerHTML = `
-                <div class="equipo-header">
-                    <div class="equipo-logo"><img src="${eq[0][0] || ''}" alt="Escudo"></div>
-                    <div class="equipo-nombre">${team}</div>
-                </div>
-                <div class="equipo-detalle" style="display:block;">
-                    <div class="equipo-jugadores">
-                        <h3>JUGADORES</h3>
-                        <div class="jugadores-grid">
-                            ${eq.slice(4, 15).map(j => `<div class="jugador-card"><img src="${j[2] || ''}" alt=""><span class="jugador-nombre">${j[1] || ''}</span></div>`).join('')}
-                        </div>
-                    </div>
-                </div>`;
-                    jugadoresContainer.appendChild(div);
+                    div.innerHTML = `<div class="equipo-header"><div class="equipo-logo"><img src="${eq[0][0] || ''}"></div><div class="equipo-nombre">${team}</div></div><div class="equipo-detalle" style="display:block;padding:10px;"><div class="jugadores-grid">${eq.slice(4, 15).map(j => `<div class="jugador-card"><img src="${j[2] || ''}"><span class="jugador-nombre">${j[1] || ''}</span></div>`).join('')}</div></div>`;
+                    container.appendChild(div);
                 });
-                jugadoresContainer.style.display = jugadoresContainer.style.display === "block" ? "none" : "block";
+                container.style.display = container.style.display === "block" ? "none" : "block";
             });
         });
     </script>
