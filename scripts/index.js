@@ -107,12 +107,12 @@ const jornadas = {
         titulo: "JORNADA 5",
         banner: crearBannerPartidos([
             { local: "ASTON BIRRA", visitante: "CUM UNITED", colorLocal: "#3B9DB8", colorVisitante: "#EECEAF" },
-            { local: "I.E. SALA", visitante: "ATLÉTICO MORANTE", colorLocal: "#3C4868", colorVisitante: "#BB284F" },
+            { local: "I.E. SALA", visitante: "ATLÉTICO MORANTE", colorLocal: "#3C4868", colorVisitante: "#BB284F"},
             { local: "CUM CITY", visitante: "RAYO MARIGUANO", colorLocal: "#c2ddf2", colorVisitante: "#036700" }
         ]),
         resultados: crearResultados([
-            { local: "ASTON BIRRA", visitante: "CUM UNITED", resultado: "vs", fecha: "POR DEFINIR" },
-            { local: "I.E. SALA", visitante: "ATLÉTICO MORANTE", resultado: "vs", fecha: "POR DEFINIR" },
+            { local: "ASTON BIRRA", visitante: "CUM UNITED", resultado: "1 - 5", fecha: "03 DIC | 21:00h", lugar: "CIUDAD DEPORTIVA" },
+            { local: "I.E. SALA", visitante: "ATLÉTICO MORANTE", resultado: "vs", fecha: "POR DEFINIR", esAplazado: true },
             { local: "CUM CITY", visitante: "RAYO MARIGUANO", resultado: "vs", fecha: "POR DEFINIR" }
         ], "UNIÓN DEPORTIVA PORRETA", 5) 
     }

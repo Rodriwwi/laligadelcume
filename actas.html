@@ -11,7 +11,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-VZXFXDQZ1C');
     </script>
     <style>
@@ -21,7 +20,6 @@
             margin-top: 100px;
             padding: 20px;
             background: #f0f2f5;
-            /* Fondo general un poco más oscuro para contraste */
         }
 
         .container {
@@ -41,7 +39,7 @@
             letter-spacing: 1px;
         }
 
-        /* --- CLASE MAESTRA: TARJETAS DE PASOS (El estilo que te gusta) --- */
+        /* --- TARJETAS --- */
         .step-card {
             background: #f9f9f9;
             padding: 25px;
@@ -68,10 +66,8 @@
             text-transform: uppercase;
         }
 
-        /* --- FORMULARIOS E INPUTS --- */
-        .form-group {
-            margin-bottom: 20px;
-        }
+        /* --- FORMULARIOS --- */
+        .form-group { margin-bottom: 20px; }
 
         label {
             display: block;
@@ -81,11 +77,7 @@
             font-weight: bold;
         }
 
-        /* Estilo unificado para todos los inputs y selects */
-        select,
-        input[type="text"],
-        input[type="time"],
-        input[type="file"] {
+        select, input[type="text"], input[type="time"], input[type="file"] {
             width: 100%;
             padding: 12px 15px;
             border-radius: 8px;
@@ -95,18 +87,15 @@
             font-weight: 500;
             color: #333;
             box-sizing: border-box;
-            /* Importante para que no se salgan */
             transition: all 0.3s ease;
         }
 
-        select:focus,
-        input:focus {
+        select:focus, input:focus {
             border-color: #ef3340;
             outline: none;
             box-shadow: 0 0 0 3px rgba(239, 51, 64, 0.1);
         }
 
-        /* Layout para inputs en línea (Arbitro, Lugar, Hora) */
         .inline-inputs {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -127,36 +116,17 @@
             font-family: 'Righteous', sans-serif;
         }
 
-        button:active {
-            transform: scale(0.98);
-        }
+        button:active { transform: scale(0.98); }
 
-        #generarActa {
-            background: #2c2c2c;
-            /* Negro elegante para generar */
-            color: white;
-        }
+        #generarActa { background: #2c2c2c; color: white; }
+        #generarActa:hover { background: #444; }
 
-        #generarActa:hover {
-            background: #444;
-        }
-
-        #btnSubirSupabase {
-            background: #ef3340;
-            /* Rojo corporativo para subir (acción final) */
+        #btnPrevisualizar { /* Botón azul para revisar antes de subir */
+            background: #007bff; 
             color: white;
             margin-top: 15px;
         }
-
-        #btnSubirSupabase:hover {
-            background: #d12a36;
-        }
-
-        /* Botón secundario (Ver jugadores) */
-        #ver-jugadores-container {
-            text-align: center;
-            margin-top: 40px;
-        }
+        #btnPrevisualizar:hover { background: #0056b3; }
 
         #ver-jugadores-btn {
             background: #efa433;
@@ -164,12 +134,9 @@
             width: auto;
             padding: 10px 25px;
         }
+        #ver-jugadores-btn:hover { background: #d99020; }
+        #ver-jugadores-container { text-align: center; margin-top: 40px; }
 
-        #ver-jugadores-btn:hover {
-            background: #d99020;
-        }
-
-        /* --- EXTRAS --- */
         .loading {
             display: none;
             text-align: center;
@@ -178,206 +145,121 @@
             font-weight: bold;
         }
 
-        /* Login Screen */
+        /* --- LOGIN --- */
         #login-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #10ccb0;
-            z-index: 9999;
-        }
-
-        .login-box {
-            background: #fff;
-            padding: 40px;
-            border-radius: 16px;
-            text-align: center;
-            width: 90%;
-            max-width: 350px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .login-box button {
-            background: #ef3340;
-            color: white;
-            margin-top: 10px;
-        }
-
-        /* Estilos de las tarjetas de jugadores (ocultas por defecto) */
-        .equipo-card {
-            background: #f9f9f9;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            overflow: hidden;
-            border: 1px solid #eee;
-        }
-
-        .equipo-header {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            background: #333;
-            color: white;
-        }
-
-        .equipo-logo img {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-            border-radius: 50%;
-        }
-
-        .jugadores-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding: 10px;
-        }
-
-        .jugador-card {
-            text-align: center;
-            width: 70px;
-            font-size: 12px;
-        }
-
-        .jugador-card img {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 5px;
-        }
-
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-            margin-top: 60px;
-        }
-
-        .footer-logo img {
-            max-width: 180px;
-            margin-bottom: 20px;
-        }
-
-        /* CORRECCIÓN: Color del nombre de los jugadores */
-        .jugador-nombre {
-            color: #2c2c2c;
-            /* Gris oscuro para que se lea sobre fondo blanco */
-            font-weight: bold;
-            /* Negrita para que resalte */
-            display: block;
-            /* Asegura que ocupe su propia línea */
-            margin-top: 5px;
-            line-height: 1.2;
-        }
-
-        /* --- ESTILOS DEL LOGIN (REDISEÑADO) --- */
-        #login-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
             background: rgba(239, 51, 64, 0.95);
-            /* Fondo rojo corporativo semitransparente */
             backdrop-filter: blur(5px);
-            /* Efecto borroso elegante */
             z-index: 9999;
         }
-
         .login-box {
-            background: #fff;
-            padding: 50px 40px;
-            border-radius: 20px;
-            text-align: center;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            transform: translateY(0);
+            background: #fff; padding: 50px 40px; border-radius: 20px;
+            text-align: center; width: 90%; max-width: 400px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
             animation: fadeInUps 0.5s ease-out;
         }
+        .login-box h2 { color: #2c2c2c; margin-bottom: 30px; font-size: 1.8rem; }
+        .login-box input { margin-bottom: 20px; text-align: center; width: 90%; }
+        .login-box button { background: #ef3340; color: white; }
+        #error-msg { color: #ef3340; margin-top: 20px; display: none; background: #ffe6e6; padding: 10px; border-radius: 8px; }
 
-        .login-box h2 {
-            color: #2c2c2c;
-            margin-bottom: 30px;
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        /* --- TARJETAS JUGADORES --- */
+        .equipo-card { background: #f9f9f9; border-radius: 8px; margin-bottom: 15px; overflow: hidden; border: 1px solid #eee; }
+        .equipo-header { display: flex; align-items: center; padding: 10px; background: #333; color: white; }
+        .equipo-logo img { width: 40px; height: 40px; margin-right: 10px; border-radius: 50%; }
+        .jugadores-grid { display: flex; flex-wrap: wrap; gap: 10px; padding: 10px; }
+        .jugador-card { text-align: center; width: 70px; font-size: 12px; }
+        .jugador-card img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; margin-bottom: 5px; }
+        .jugador-nombre { color: #2c2c2c; font-weight: bold; display: block; margin-top: 5px; line-height: 1.2; }
+
+        footer { background: #1a1a1a; color: white; padding: 40px 0; text-align: center; margin-top: 60px; }
+        .footer-logo img { max-width: 180px; margin-bottom: 20px; }
+
+        /* --- NUEVO: VENTANA EMERGENTE (MODAL) --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); z-index: 10000;
+            display: none; align-items: center; justify-content: center;
+            backdrop-filter: blur(3px);
         }
-
-        .login-box input {
-            width: 90%;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 2px solid #eee;
-            border-radius: 10px;
-            font-size: 16px;
-            text-align: center;
-            transition: border-color 0.3s;
+        .modal-content {
+            background: white; padding: 0; border-radius: 12px;
+            width: 90%; max-width: 500px; overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
-        .login-box input:focus {
-            border-color: #ef3340;
-            outline: none;
+        .modal-header {
+            background: #ef3340; color: white; padding: 20px;
+            text-align: center; font-size: 1.2rem; font-weight: bold;
         }
-
-        .login-box button {
-            background: #ef3340;
-            color: white;
-            padding: 15px;
-            font-size: 16px;
-            border-radius: 10px;
-            width: 100%;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(239, 51, 64, 0.3);
-            transition: transform 0.2s, background 0.2s;
+        .modal-body { padding: 25px; color: #333; }
+        
+        .resumen-partido {
+            display: flex; justify-content: space-between; align-items: center;
+            background: #f4f4f4; padding: 15px; border-radius: 10px; margin-bottom: 20px;
         }
-
-        .login-box button:hover {
-            background: #d12a36;
-            transform: translateY(-2px);
+        .res-equipo { font-weight: bold; width: 40%; text-align: center; font-size: 0.9rem; }
+        .res-marcador { font-size: 1.8rem; font-weight: 900; color: #ef3340; }
+        
+        .resumen-goleadores {
+            font-size: 0.9rem; margin-bottom: 20px; max-height: 150px; overflow-y: auto;
+            border: 1px solid #eee; padding: 10px; border-radius: 8px;
         }
-
-        #error-msg {
-            color: #ef3340;
-            margin-top: 20px;
-            font-weight: bold;
-            display: none;
-            /* Oculto por defecto */
-            background: #ffe6e6;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 14px;
+        .item-gol { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 5px 0; }
+        .item-gol:last-child { border-bottom: none; }
+        
+        .modal-actions {
+            padding: 20px; background: #f9f9f9; display: flex; gap: 10px;
         }
+        .btn-cancel { background: #ccc; color: #333; }
+        .btn-cancel:hover { background: #bbb; }
+        .btn-confirm { background: #28a745; color: white; } /* Verde confirmación */
+        .btn-confirm:hover { background: #218838; }
 
-        /* Pequeña animación de entrada */
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
         @keyframes fadeInUps {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 
 <body>
 
+    <!-- MODAL DE CONFIRMACIÓN -->
+    <div id="modalConfirm" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">RESUMEN DE ACTA</div>
+            <div class="modal-body">
+                <p style="text-align: center; margin-bottom: 15px; color: #666;">
+                    Por favor, confirma que los datos extraídos del acta son correctos:
+                </p>
+                
+                <!-- Resumen Marcador -->
+                <div class="resumen-partido">
+                    <div class="res-equipo" id="modLocal">LOCAL</div>
+                    <div class="res-marcador" id="modResultado">0 - 0</div>
+                    <div class="res-equipo" id="modVisitante">VISITANTE</div>
+                </div>
+
+                <!-- Resumen Goleadores -->
+                <h4 style="margin: 0 0 10px 0; font-size: 1rem; color: #ef3340;">GOLEADORES:</h4>
+                <div class="resumen-goleadores" id="modGoleadores">
+                    <!-- Se rellena con JS -->
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="cerrarModal()">CANCELAR</button>
+                <button class="btn-confirm" id="btnConfirmarSubida">✅ SÍ, SUBIR ACTA</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGIN -->
     <div id="login-screen">
         <div class="login-box">
             <h2 style="color:#ef3340; margin-bottom:20px;">ACCESO ÁRBITROS</h2>
@@ -387,6 +269,7 @@
         </div>
     </div>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <div id="content" style="display:none;">
 
         <nav class="navbar">
@@ -398,35 +281,37 @@
         <div class="container">
             <h1>PORTAL DEL ÁRBITRO</h1>
 
+            <!-- PASO 1 -->
             <div class="step-card">
                 <div class="step-header">1. DATOS DEL ENCUENTRO</div>
 
                 <div class="form-group">
                     <label>JORNADA</label>
                     <select id="jornadaSelect">
+                        <option value="1">Jornada 1</option>
+                        <option value="2">Jornada 2</option>
+                        <option value="3">Jornada 3</option>
+                        <option value="4">Jornada 4</option>
                         <option value="5" selected>Jornada 5</option>
+                        <option value="6">Jornada 6</option>
                     </select>
                 </div>
 
                 <div class="inline-inputs" style="margin-bottom: 20px;">
                     <div class="form-group">
                         <label>EQUIPO LOCAL</label>
-                        <select id="equipoLocal">
-                            <option value="">Cargando...</option>
-                        </select>
+                        <select id="equipoLocal"><option value="">Cargando...</option></select>
                     </div>
                     <div class="form-group">
                         <label>EQUIPO VISITANTE</label>
-                        <select id="equipoVisitante">
-                            <option value="">Cargando...</option>
-                        </select>
+                        <select id="equipoVisitante"><option value="">Cargando...</option></select>
                     </div>
                 </div>
 
                 <div class="inline-inputs">
                     <div class="form-group">
                         <label>ÁRBITRO</label>
-                        <input type="text" id="arbitro" placeholder="Nombre(s)">
+                        <input type="text" id="arbitro" placeholder="Nombre completo">
                     </div>
                     <div class="form-group">
                         <label>LUGAR</label>
@@ -439,6 +324,7 @@
                 </div>
             </div>
 
+            <!-- PASO 2 -->
             <div class="step-card">
                 <div class="step-header">2. PLANTILLA DEL ACTA</div>
                 <p style="color:#666; margin-bottom:15px; font-size:14px;">
@@ -448,6 +334,7 @@
                 <div id="loading" class="loading">⏳ Generando archivo...</div>
             </div>
 
+            <!-- PASO 3 (MODIFICADO) -->
             <div class="step-card">
                 <div class="step-header">3. PUBLICAR ACTA</div>
                 <p style="color:#666; margin-bottom:15px; font-size:14px;">
@@ -457,17 +344,19 @@
                 <div class="form-group">
                     <label for="archivoActaFinal"
                         style="cursor: pointer; background: white; border: 2px dashed #ccc; padding: 30px; text-align: center; border-radius: 8px;">
-                        Seleccionar Archivo Excel
+                        Subir Excel
                         <input type="file" id="archivoActaFinal" accept=".xlsx"
                             style="display: block; margin: 10px auto;">
                     </label>
                 </div>
 
-                <button id="btnSubirSupabase">SUBIR ACTA</button>
-                <p id="mensajeSubida" style="text-align:center; margin-top:15px; font-weight:bold; font-size: 1.1rem;">
-                </p>
+                <!-- Botón cambiado a PREVISUALIZAR -->
+                <button id="btnPrevisualizar">REVISAR Y SUBIR</button>
+                
+                <p id="mensajeSubida" style="text-align:center; margin-top:15px; font-weight:bold; font-size: 1.1rem;"></p>
             </div>
 
+            <!-- EXTRAS -->
             <div id="ver-jugadores-container">
                 <button id="ver-jugadores-btn">CONSULTAR JUGADORES</button>
                 <div id="jugadores-equipos" style="margin-top:20px;"></div>
@@ -480,6 +369,7 @@
 
     </div>
 
+    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -495,12 +385,20 @@
                 document.getElementById("error-msg").style.display = "block";
             }
         }
+
+        function cerrarModal() {
+            document.getElementById('modalConfirm').style.display = 'none';
+            document.getElementById('btnPrevisualizar').disabled = false;
+            document.getElementById('btnPrevisualizar').textContent = "REVISAR Y SUBIR";
+        }
     </script>
 
     <script>
         const supabaseUrl = 'https://omuhkqkjwoibsayyvuag.supabase.co';
         const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9tdWhrcWtqd29pYnNheXl2dWFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ2NjE0NjMsImV4cCI6MjA4MDIzNzQ2M30.lZgweY5PS3UmF1zJ5ocUuHGmuoyTuVFF_9BS5xw2VXY';
         const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyYfzQOdOVQQI-wlTABYPDZdPmwf_JxOIOHMqOiqwUfCJhrZFZi5Zq3h85N1ZY_PWyU/exec";
 
         const ALIAS_EQUIPOS = {
             "RAYO MARIGUANO": "rayo",
@@ -516,6 +414,9 @@
             return ALIAS_EQUIPOS[nombre] || nombre.toLowerCase().replace(/\s+/g, '').substring(0, 10);
         }
 
+        // Variable global para guardar datos entre revisión y subida
+        let datosPendientesDeSubida = null;
+
         document.addEventListener("DOMContentLoaded", async () => {
             const plantillaPath = "excels/plantilla_Acta.xlsx";
             const equiposPath = "excels/equipos_actas.xlsx";
@@ -528,7 +429,8 @@
             const selectVisitante = document.getElementById("equipoVisitante");
 
             const fileInput = document.getElementById('archivoActaFinal');
-            const btnSubir = document.getElementById('btnSubirSupabase');
+            const btnPrevisualizar = document.getElementById('btnPrevisualizar');
+            const btnConfirmar = document.getElementById('btnConfirmarSubida');
             const msgSubida = document.getElementById('mensajeSubida');
 
             // 1. Cargar Datos
@@ -563,6 +465,7 @@
                 const lugar = document.getElementById("lugar").value;
 
                 if (!local || !visitante) return alert("Selecciona equipos.");
+                if (local === visitante) return alert("Equipos iguales.");
 
                 generarActaBtn.disabled = true;
                 loadingDiv.style.display = 'block';
@@ -592,33 +495,130 @@
                 finally { generarActaBtn.disabled = false; loadingDiv.style.display = 'none'; }
             });
 
-            // 3. Subir
-            btnSubir.addEventListener('click', async () => {
+            // 3. BOTÓN PREVISUALIZAR (Nuevo paso intermedio)
+            btnPrevisualizar.addEventListener('click', async () => {
                 const file = fileInput.files[0];
                 if (!file) return alert("Selecciona el archivo Excel.");
 
-                const nombreArchivo = file.name;
-                btnSubir.disabled = true;
-                msgSubida.textContent = "Subiendo...";
-                msgSubida.style.color = "blue";
+                btnPrevisualizar.disabled = true;
+                btnPrevisualizar.textContent = "Analizando archivo...";
 
                 try {
-                    const { data, error } = await supabase.storage
+                    const arrayBuffer = await file.arrayBuffer();
+                    const workbook = XLSX.read(arrayBuffer, { type: "array" });
+                    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const get = (c) => (sheet[c]?.v || "");
+
+                    // Datos clave
+                    const equipoLocal = get("C2");
+                    const equipoVisitante = get("C3");
+                    const golesL = get("M23") || 0;
+                    const golesV = get("M24") || 0;
+
+                    const jugadoresLocal = extraerJugadoresConEquipo(sheet, 'A', 'B', 'D', equipoLocal);
+                    const jugadoresVisitante = extraerJugadoresConEquipo(sheet, 'L', 'M', 'R', equipoVisitante);
+
+                    const goleadores = [
+                        ...jugadoresLocal.filter(j => j.goles > 0),
+                        ...jugadoresVisitante.filter(j => j.goles > 0)
+                    ];
+
+                    // Guardamos en variable global para usar al confirmar
+                    datosPendientesDeSubida = {
+                        file: file,
+                        nombreArchivo: file.name,
+                        datosParaGoogle: {
+                            local: equipoLocal,
+                            visitante: equipoVisitante,
+                            golesLocal: golesL,
+                            golesVisitante: golesV,
+                            goleadores: goleadores
+                        }
+                    };
+
+                    // PINTAR MODAL
+                    document.getElementById('modLocal').textContent = equipoLocal;
+                    document.getElementById('modVisitante').textContent = equipoVisitante;
+                    document.getElementById('modResultado').textContent = `${golesL} - ${golesV}`;
+
+                    const listaGoles = document.getElementById('modGoleadores');
+                    listaGoles.innerHTML = "";
+                    
+                    if (goleadores.length === 0) {
+                        listaGoles.innerHTML = "<p style='text-align:center; color:#888;'>Sin goleadores (0-0 o no anotados)</p>";
+                    } else {
+                        goleadores.forEach(g => {
+                            const div = document.createElement('div');
+                            div.className = "item-gol";
+                            div.innerHTML = `<span>${g.nombre} (${g.equipo})</span> <strong>${g.goles} ⚽</strong>`;
+                            listaGoles.appendChild(div);
+                        });
+                    }
+
+                    // Mostrar modal
+                    document.getElementById('modalConfirm').style.display = 'flex';
+
+                } catch (err) {
+                    console.error(err);
+                    alert("Error leyendo el archivo. Asegúrate de que es un acta válida.");
+                    btnPrevisualizar.disabled = false;
+                    btnPrevisualizar.textContent = "REVISAR Y SUBIR";
+                }
+            });
+
+            // 4. BOTÓN CONFIRMAR DEL MODAL (Sube de verdad)
+            btnConfirmar.addEventListener('click', async () => {
+                if (!datosPendientesDeSubida) return;
+
+                btnConfirmar.disabled = true;
+                btnConfirmar.textContent = "🚀 Subiendo...";
+                
+                // Ocultamos modal para ver el progreso principal
+                document.getElementById('modalConfirm').style.display = 'none';
+
+                const { file, nombreArchivo, datosParaGoogle } = datosPendientesDeSubida;
+
+                try {
+                    // A) Supabase
+                    msgSubida.textContent = "1/2 Subiendo archivo a la nube...";
+                    msgSubida.style.color = "blue";
+
+                    const { error } = await supabase.storage
                         .from('actas')
                         .upload(nombreArchivo, file, { cacheControl: '0', upsert: true });
 
                     if (error) throw error;
 
-                    msgSubida.textContent = `✅ ¡ACTA "${nombreArchivo}" SUBIDA!`;
+                    // B) Google Sheets
+                    msgSubida.textContent = "2/2 Actualizando base de datos...";
+                    msgSubida.style.color = "orange";
+
+                    await fetch(GOOGLE_SCRIPT_URL, {
+                        method: "POST",
+                        mode: "no-cors",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(datosParaGoogle)
+                    });
+
+                    // ÉXITO
+                    msgSubida.textContent = `✅ ¡ÉXITO! Acta publicada y liga actualizada.`;
                     msgSubida.style.color = "green";
                     fileInput.value = "";
+                    
+                    // Resetear UI
+                    btnPrevisualizar.disabled = false;
+                    btnPrevisualizar.textContent = "REVISAR Y SUBIR";
+                    btnConfirmar.disabled = false;
+                    btnConfirmar.textContent = "✅ SÍ, SUBIR TODO";
 
                 } catch (err) {
                     console.error(err);
                     msgSubida.textContent = "❌ Error: " + err.message;
                     msgSubida.style.color = "red";
-                } finally {
-                    btnSubir.disabled = false;
+                    btnPrevisualizar.disabled = false;
+                    btnPrevisualizar.textContent = "REVISAR Y SUBIR";
+                    btnConfirmar.disabled = false;
+                    btnConfirmar.textContent = "✅ SÍ, SUBIR TODO";
                 }
             });
 
@@ -636,6 +636,24 @@
                 container.style.display = container.style.display === "block" ? "none" : "block";
             });
         });
+
+        function extraerJugadoresConEquipo(sheet, colConv, colNombre, colGoles, nombreEquipo) {
+            const jugadores = [];
+            for (let i = 7; i <= 18; i++) {
+                const convocado = sheet[`${colConv}${i}`]?.v;
+                const nombre = sheet[`${colNombre}${i}`]?.v;
+                const goles = sheet[`${colGoles}${i}`]?.v || 0;
+
+                if (convocado && nombre) {
+                    jugadores.push({
+                        nombre: nombre,
+                        goles: parseInt(goles),
+                        equipo: nombreEquipo
+                    });
+                }
+            }
+            return jugadores;
+        }
     </script>
 </body>
 

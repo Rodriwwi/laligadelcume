@@ -95,8 +95,20 @@ const jornadas = [
             { local: { name: 'UDP', logo: 'images/Escudos/UNIÓN DEPORTIVA PORRETA.png' }, visitante: { name: 'CUM CITY', logo: 'images/Escudos/CUM CITY.png' } },
         ]
     },
+    {
+        start: '2026-02-01', end: '2026-02-10', label: 'J7',
+        matches: [
+            { local: { name: 'CUM UNITED', logo: 'images/Escudos/CUM UNITED.png' }, visitante: { name: 'RAYO MARIGUANO', logo: 'images/Escudos/RAYO MARIGUANO.png' } },
+            { local: { name: 'ASTON BIRRA', logo: 'images/Escudos/ASTON BIRRA.png' }, visitante: { name: 'UDP', logo: 'images/Escudos/UNIÓN DEPORTIVA PORRETA.png' } },
+            { local: { name: 'I.E. SALA', logo: 'images/Escudos/I.E. SALA.png' }, visitante: { name: 'CUM CITY', logo: 'images/Escudos/CUM CITY.png' } },
+        ]
+    },
     // Fin primera vuelta.
 ];
+
+// --- Configuración Mercado de Fichajes ---
+const mercadoStart = new Date('2025-12-20T00:00:00');
+const mercadoEnd = new Date('2026-01-31T23:59:59');
 
 const monthNames = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
 const dayNames = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
@@ -127,17 +139,30 @@ function renderCalendar(month, year) {
         const dayEl = document.createElement('div');
         dayEl.classList.add('day');
         dayEl.textContent = day;
-        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 
+        // Construir fecha actual del bucle
+        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        // Creamos objeto Date a las 00:00:00 para comparar rangos
+        const current = new Date(year, month, day);
+
+        // Marcar HOY
         if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
             dayEl.classList.add('today');
         }
 
+        let isMatchDay = false;
+
+        // 1. Renderizar Jornadas de Liga
         jornadas.forEach(j => {
             const start = new Date(j.start);
+            // Ajustar start a medianoche para comparación correcta
+            start.setHours(0,0,0,0);
+            
             const end = new Date(j.end);
-            const current = new Date(dateStr);
+            end.setHours(23,59,59,999);
+
             if (current >= start && current <= end) {
+                isMatchDay = true;
                 const tag = document.createElement('div');
                 tag.classList.add('jornada');
                 tag.textContent = j.label;
@@ -145,6 +170,16 @@ function renderCalendar(month, year) {
                 dayEl.addEventListener('click', () => openModal(j));
             }
         });
+
+        // 2. Renderizar Mercado de Fichajes (Solo si no hay jornada)
+        if (!isMatchDay && current >= mercadoStart && current <= mercadoEnd) {
+            const tag = document.createElement('div');
+            // Añadimos clase 'jornada' para la forma básica y 'mercado' para el color naranja
+            tag.classList.add('jornada', 'mercado'); 
+            tag.textContent = 'M';
+            dayEl.appendChild(tag);
+            dayEl.addEventListener('click', () => openMercadoModal());
+        }
 
         calendarEl.appendChild(dayEl);
     }
@@ -182,12 +217,24 @@ function openModal(jornada) {
         const div = document.createElement('div');
         div.classList.add('match');
         div.innerHTML = `
-                    <div><img src="${m.local.logo}" alt="${m.local.name}"> ${m.local.name}</div>
-                    <div>-</div>
-                    <div>${m.visitante.name} <img src="${m.visitante.logo}" alt="${m.visitante.name}"></div>
-                `;
+            <div><img src="${m.local.logo}" alt="${m.local.name}"> ${m.local.name}</div>
+            <div>-</div>
+            <div>${m.visitante.name} <img src="${m.visitante.logo}" alt="${m.visitante.name}"></div>
+        `;
         matchesContainer.appendChild(div);
     });
+    modal.style.display = 'flex';
+}
+
+// Nueva función para abrir el modal del Mercado
+function openMercadoModal() {
+    modalTitle.textContent = "MERCADO DE FICHAJES";
+    matchesContainer.innerHTML = `
+        <div style="text-align: center; font-size: 1.1em; color: #2c2c2c; padding: 20px;">
+            <p style="margin-bottom: 10px;"><strong>Periodo de traspasos abierto</strong></p>
+            <p>Desde el 20 de Diciembre<br>hasta el 31 de Enero</p>
+        </div>
+    `;
     modal.style.display = 'flex';
 }
 
